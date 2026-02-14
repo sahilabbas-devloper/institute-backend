@@ -29,7 +29,7 @@ const login = async (req, res) => {
             } else {
                const token = jwt.sign({ id: 1 }, process.env.JWT_SECRET, { expiresIn: process.env.JWT_EXPIRY })
                res.cookie("token", token, {
-                  httpOnly:true,
+                  httpsOnly:true,
                   secure:true,
                   samesite:"none",
                   maxAge:3600000
