@@ -2,7 +2,7 @@ import { Students } from "../model/student.js";
 
 const Creatdata = async (req, res) => {
    const { name, fathername, clas, address, number, schoolname, date } = req.body;
-
+console.log(name, fathername, clas, address, number, schoolname, date)
    try {
       const student = await Students.create({
          studentname: name,

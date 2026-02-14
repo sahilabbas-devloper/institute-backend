@@ -4,14 +4,14 @@ const Updatedata = async (req, res) => {
 
 
    try {
-      const { username, feild, value } = req.body;
-      console.log(username, feild, value)
-
-      const Std = await Students.findOneAndUpdate({ studentname: username }, { $set: { [feild]: value } })
+      const { username, field, value } = req.body;
+      console.log(username, field, value)
+   
+      const Std = await Students.findOneAndUpdate({ studentname: username }, { $set: { [field]: value } })
       if (!Std) {
          res.json("plz enter a valid user.")
       } else {
-         res.json("details updated sucessfully.")
+         res.json("details updated sucessfully.",Std)
       }
 
    } catch (error) {
