@@ -28,12 +28,8 @@ const login = async (req, res) => {
                res.json({ massage: "passward incorrect" })
             } else {
                const token = jwt.sign({ id: 1 }, process.env.JWT_SECRET, { expiresIn: process.env.JWT_EXPIRY })
-               res.cookie("token", token, {
-                  httpsOnly:true,
-                  secure:true,
-                  samesite:"none",
-                  maxAge:3600000
-               })
+               res.cookie("token", token
+                 )
                res.json({ massage: "sucessfully Login.", user })
             }
          }
