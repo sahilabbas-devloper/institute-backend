@@ -20,7 +20,7 @@ import Forgot from "../controllers/forgotpass.js"
 
 const router = express.Router()
 
-router.get("/Home", Verify, home)
+router.get("/Home", Verify ,home)
 router.post("/logout", logout)
 router.post("/Rajister", rajister)
 router.post("/Login", login)
