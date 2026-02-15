@@ -5,10 +5,10 @@ const Forgot = async (req, res) => {
 
 
    try {
-      const { newpass, phone } = req.body;
+      const { newpass, dob } = req.body;
 
       const hash = await bcrypt.hash(newpass, 10)
-      const user = await User.findOneAndUpdate({ Mobilenumber: phone }, { $set: { passward: hash } })
+      const user = await User.findOneAndUpdate({ DOB: dob }, { $set: { passward: hash } })
       if (!user) {
          res.json("inviled number.")
       } else {

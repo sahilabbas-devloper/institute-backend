@@ -5,14 +5,14 @@ import { User } from '../model/usermodle.js'
 const rajister = async (req, res) => {
 
    try {
-      const { role, username, email, passward, number } = req.body;
+      const { role, username, email, passward, dob } = req.body;
 
       const hash = await bcrypt.hash(passward, 10)
       const user = await User.create({
          role: role,
          username: username,
          email: email,
-         Mobilenumber: number,
+         DOB: dob,
          passward: hash
       }
       )

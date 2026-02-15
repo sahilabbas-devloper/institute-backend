@@ -4,7 +4,7 @@ const userschema = mongoose.Schema({
     role: String,
     username: String,
     email: String,
-    Mobilenumber: Number,
+    DOB: String,
     passward: String
 }, { timestamp: true })
 
