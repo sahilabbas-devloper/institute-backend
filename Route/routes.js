@@ -14,23 +14,22 @@ import Delete from "../controllers/deletedata.js"
 import Sendsms from "../controllers/sendsms.js"
 import Forgot from "../controllers/forgotpass.js"
 
-
-
-
-
 const router = express.Router()
 
-router.get("/Home", Verify ,home)
-router.post("/logout", logout)
-router.post("/Rajister", rajister)
+// 🔓 Public routes
 router.post("/Login", login)
-router.post("/senddata", Creatdata)
-router.post("/getdata", Senddata)
-router.post("/sendfeedback", Creatfeedback)
-router.get("/getfeedbacks", Sendfeedback)
-router.put("/updatedata", Updatedata)
-router.delete("/deletedata", Delete)
-router.post("/send-whatsapp", Sendsms)
+router.post("/Rajister", rajister)
 router.put("/forgotpass", Forgot)
+
+// 🔒 Protected routes
+router.get("/Home", Verify, home)
+router.post("/logout", Verify, logout)
+router.post("/senddata", Verify, Creatdata)
+router.post("/getdata", Verify, Senddata)
+router.post("/sendfeedback", Verify, Creatfeedback)
+router.get("/getfeedbacks", Verify, Sendfeedback)
+router.put("/updatedata", Verify, Updatedata)
+router.delete("/deletedata", Verify, Delete)
+router.post("/send-whatsapp", Verify, Sendsms)
 
 export default router
