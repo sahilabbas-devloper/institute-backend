@@ -17,15 +17,15 @@ const login = async (req, res) => {
       const user = await User.findOne({ username })
 
       if (!user) {
-         res.json({ massage: "user not found." })
+         res.json({ message: "user not found." })
       } else {
          if (role !== user.role) {
-            res.json({ massage: "plz select correct role" })
+            res.json({ message: "plz select correct role" })
 
          } else {
             const match = await bcrypt.compare(passward, user.passward)
             if (!match) {
-               res.json({ massage: "passward incorrect" })
+               res.json({ message: "passward incorrect" })
             } else {
                const token = jwt.sign({ id: 1 }, process.env.JWT_SECRET, { expiresIn: process.env.JWT_EXPIRY })
                res.cookie("token", token, {
@@ -35,12 +35,13 @@ const login = async (req, res) => {
                   maxAge: 24 * 60 * 60 * 1000
                })
                
-               res.json({ massage: "sucessfully Login.", user ,token})
+               res.json({ message: "successfully Login.", user ,token})
             }
          }
       }
    } catch (error) {
       console.log("Login error", error)
+      res.status(500).json({message: "internal server error"})
    }
 }
 

@@ -2,7 +2,7 @@
 
 
 const home = (req, res) => {
-   res.json({ massage: "welcome" })
+   res.json({ message: "welcome" })
 }
 
 
