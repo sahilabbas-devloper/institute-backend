@@ -6,7 +6,7 @@ const Sendfeedback = async (req, res) => {
       const feedbacks = await Feedbacks.find()
 
       if (!feedbacks) {
-         res.json("no feedbacks.")
+         res.json({ message : "no feedbacks."})
       }
       res.json(feedbacks)
    } catch (error) {
