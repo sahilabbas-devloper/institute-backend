@@ -29,19 +29,18 @@ const login = async (req, res) => {
             } else {
                const token = jwt.sign({ id: 1 }, process.env.JWT_SECRET, { expiresIn: process.env.JWT_EXPIRY })
                res.cookie("token", token, {
-                  httpOnly:true,
-                  secure:true,
-                  sameSite:"none",
+                  httpOnly: true,
+                  secure: process.env.NODE_ENV === "production",   // true sirf production (Netlify+deployed backend) pe
+                  sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
                   maxAge: 24 * 60 * 60 * 1000
                })
-               
-               res.json({ message: "successfully Login.", user ,token})
+               res.json({ message: "successfully Login.", user, token })
             }
          }
       }
    } catch (error) {
       console.log("Login error", error)
-      res.status(500).json({message: "internal server error"})
+      res.status(500).json({ message: "internal server error" })
    }
 }
 

@@ -7,7 +7,6 @@ const Verify = (req, res, next) => {
   
   // Safely optional chaining (?.) use karein
   const token = req.cookies?.token;
-  
 
   if (!token) {
     // Correct spelling: message
