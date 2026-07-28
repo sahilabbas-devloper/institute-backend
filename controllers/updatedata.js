@@ -12,7 +12,7 @@ const Updatedata = async (req, res) => {
 
       const Std = await Students.findOneAndUpdate({ studentname: username }, { $set: { [field]: value } })
       if (!Std) {
-         res.status(401).json({message :"plz enter a valid user."})
+       return res.status(401).json({message :"plz enter a valid user."})
       } else {
          res.status(200).json({ message : "details updated sucessfully.", Std})
       }
