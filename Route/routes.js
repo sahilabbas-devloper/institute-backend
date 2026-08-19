@@ -13,6 +13,7 @@ import Updatedata from "../controllers/updatedata.js"
 import Delete from "../controllers/deletedata.js"
 import Sendsms from "../controllers/sendsms.js"
 import Forgot from "../controllers/forgotpass.js"
+import getAllNames from "../controllers/Studentname.js";
 
 const router = express.Router()
 
@@ -20,6 +21,7 @@ const router = express.Router()
 router.post("/Login", login)
 router.post("/Rajister", rajister)
 router.put("/forgotpass", Forgot)
+
 
 // 🔒 Protected routes
 router.get("/Home", Verify, home)
@@ -31,5 +33,6 @@ router.get("/getfeedbacks", Verify, Sendfeedback)
 router.put("/updatedata", Verify, Updatedata)
 router.delete("/deletedata", Verify, Delete)
 router.post("/send-whatsapp", Verify, Sendsms)
+router.get('/getallnames', getAllNames)
 
 export default router
