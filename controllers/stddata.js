@@ -3,6 +3,7 @@ import { Students } from "../model/student.js";
 const Creatdata = async (req, res) => {
    const { name, fathername, clas, address, number, schoolname, date } = req.body;
 
+
    if (!name) return res.status(404).json({ message: "pleses enter name !" })
    if (!fathername) return res.status(404).json({ message: "pleses enter fathername !" })
    if (!clas) return res.status(404).json({ message: "pleses enter class !" })
